@@ -2,6 +2,9 @@ import 'package:go_router/go_router.dart';
 import 'package:note_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:note_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:note_app/features/auth/presentation/pages/welcome_page.dart';
+import 'package:note_app/features/notes/presentation/pages/notes_list_page.dart';
+
+import '../features/auth/presentation/pages/splash_page.dart';
 
 //GoRouter kütüphanesini kullanıyoruz
 //Bu kütüphanede route isimlerini ve builder fonksiyonlarını tanımlıyoruz
@@ -9,8 +12,15 @@ final router = GoRouter(
   initialLocation: "/",
   routes: [
     GoRoute(
-      name: "welcome-page",
       path: "/",
+      name: "splash-page",
+      builder: (context, state) {
+        return const SplashPage();
+      },
+    ),
+    GoRoute(
+      name: "welcome-page",
+      path: "/welcome-page",
       builder: (context, state) {
         return const WelcomePage();
       },
@@ -27,6 +37,13 @@ final router = GoRouter(
       path: "/sign-up-page",
       builder: (context, state) {
         return SignUpPage();
+      },
+    ),
+    GoRoute(
+      name: "notes-list-page",
+      path: "/notes-list-page",
+      builder: (context, state) {
+        return NotesListPage();
       },
     ),
   ],

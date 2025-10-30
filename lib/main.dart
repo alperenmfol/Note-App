@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/theme/app_theme.dart';
+import 'package:note_app/features/auth/data/data_sources/auth_remote_data_source.dart';
+import 'package:note_app/features/auth/domain/entities/user.dart';
+import 'package:note_app/features/auth/presentation/cubit/splash_cubit.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'features/auth/data/data_sources/auth_local_data_source.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
 import 'features/auth/presentation/cubit/obscure_cubit.dart';
 import 'navigation/router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load();
+
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(UserAdapter());
+
+  await Supabase.initialize(
+    url: dotenv.env["SUPABASE_URL"]!,
+    anonKey: dotenv.env["SUPABASE_ANON_KEY"]!,
+  );
+
   runApp(const MyApp());
 }
 
@@ -15,7 +37,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //GoRouter konfigürasyonu
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => ObscureCubit())],
+      providers: [
+        BlocProvider(create: (context) => ObscureCubit()),
+        BlocProvider(
+          create:
+              (context) => AuthCubit(
+                authRemoteDataSource: AuthRemoteDataSource(),
+                authLocalDataSource: AuthLocalDataSource(),
+              ),
+        ),
+        BlocProvider(
+          create:
+              (context) =>
+                  SplashCubit(authLocalDataSource: AuthLocalDataSource()),
+        ),
+      ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         //Karanlık ve aydınlık temaları tanımlama
