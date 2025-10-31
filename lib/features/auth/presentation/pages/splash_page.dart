@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
         if (state is SplashAuthenticated) {
           //widgetların tamamı build olduktan sonra çalışan bir fonksiyon
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.goNamed("notes-list-page");
+            context.goNamed("main-navigation-page");
           });
         } else if (state is SplashUnauthenticated) {
           WidgetsBinding.instance.addPostFrameCallback((_) {

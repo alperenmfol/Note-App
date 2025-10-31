@@ -51,6 +51,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       await authRemoteDataSource.logout();
+      await authLocalDataSource.clearUser();
       emit(AuthLoggedOut());
     } catch (e) {
       emit(AuthFailure("Çıkış yapılamadı: $e"));

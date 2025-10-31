@@ -20,7 +20,7 @@ class SignUpPage extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
-          context.goNamed("notes-list-page");
+          context.goNamed("main-navigation-page");
         }
       },
       child: Scaffold(
@@ -60,7 +60,7 @@ class SignUpPage extends StatelessWidget {
                               "Full Name",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontFamily: "MontserratSemiBold",
                               ),
                             ),
@@ -84,7 +84,7 @@ class SignUpPage extends StatelessWidget {
                               "Email",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontFamily: "MontserratSemiBold",
                               ),
                             ),
@@ -109,7 +109,7 @@ class SignUpPage extends StatelessWidget {
                               "Password",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontFamily: "MontserratSemiBold",
                               ),
                             ),
@@ -145,7 +145,7 @@ class SignUpPage extends StatelessWidget {
                               "Confirm Password",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontFamily: "MontserratSemiBold",
                               ),
                             ),
@@ -231,7 +231,7 @@ class SignUpPage extends StatelessWidget {
                                     color:
                                         Theme.of(
                                           context,
-                                        ).colorScheme.onPrimaryContainer,
+                                        ).colorScheme.onSecondaryContainer,
                                     fontSize: 16,
                                     fontFamily: "MontserratBold",
                                   ),
@@ -251,10 +251,11 @@ class SignUpPage extends StatelessWidget {
                                       "sign-in-page",
                                     );
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     "Sign In",
                                     style: TextStyle(
                                       fontFamily: "MontserratSemiBold",
+                                      color: Theme.of(context).colorScheme.secondary,
                                     ),
                                   ),
                                 ),

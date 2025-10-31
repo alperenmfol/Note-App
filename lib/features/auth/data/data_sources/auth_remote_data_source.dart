@@ -77,7 +77,7 @@ class AuthRemoteDataSource {
         throw Exception("Token alınamadı");
       }
 
-      //Profil verisini backend’den çek
+      //Profil verisini çek
       try {
         final profileResponse = await dio.get(
           '/user/profile',

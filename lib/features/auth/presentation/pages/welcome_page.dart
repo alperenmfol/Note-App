@@ -30,11 +30,17 @@ class WelcomePage extends StatelessWidget {
                   context.pushNamed("sign-in-page");
                 },
                 style: ButtonStyle(
-                  minimumSize: WidgetStatePropertyAll(Size(double.infinity, 60)),
+                  minimumSize: WidgetStatePropertyAll(
+                    Size(double.infinity, 60),
+                  ),
                 ),
                 child: Text(
                   "Sign In",
-                  style: TextStyle(fontSize: 18, fontFamily: "MontserratBold"),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: "MontserratBold",
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ),
               SizedBox(height: 30),
@@ -43,11 +49,17 @@ class WelcomePage extends StatelessWidget {
                   context.pushNamed("sign-up-page");
                 },
                 style: ButtonStyle(
-                  minimumSize: WidgetStatePropertyAll(Size(double.infinity, 60)),
+                  minimumSize: WidgetStatePropertyAll(
+                    Size(double.infinity, 60),
+                  ),
                 ),
                 child: Text(
                   "Sign Up",
-                  style: TextStyle(fontSize: 18, fontFamily: "MontserratBold"),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: "MontserratBold",
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ),
               Expanded(flex: 40, child: SizedBox()),

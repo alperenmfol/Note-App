@@ -25,8 +25,7 @@ class SignInPage extends StatelessWidget {
             SnackBar(content: Text("Welcome! ${state.user.fullName}")),
           );
 
-          // Örneğin ana sayfaya yönlendirme
-          context.goNamed("notes-list-page");
+          context.goNamed("main-navigation-page");
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -76,7 +75,8 @@ class SignInPage extends StatelessWidget {
                                 "Email",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Theme.of(context).colorScheme.primary,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                   fontFamily: "MontserratSemiBold",
                                 ),
                               ),
@@ -96,7 +96,8 @@ class SignInPage extends StatelessWidget {
                                 "Password",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Theme.of(context).colorScheme.primary,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                   fontFamily: "MontserratSemiBold",
                                 ),
                               ),
@@ -131,13 +132,15 @@ class SignInPage extends StatelessWidget {
                               Align(
                                 alignment: Alignment.center,
                                 child: TextButton(
-                                  onPressed: () {
-                                    context.pushNamed("notes-list-page");
-                                  },
-                                  child: const Text(
+                                  onPressed: () {},
+                                  child: Text(
                                     "Forgot password?",
                                     style: TextStyle(
                                       fontFamily: "MontserratSemiBold",
+                                      color:
+                                          Theme.of(
+                                            context,
+                                          ).colorScheme.secondary,
                                     ),
                                   ),
                                 ),
@@ -204,10 +207,15 @@ class SignInPage extends StatelessWidget {
                                         "sign-up-page",
                                       );
                                     },
-                                    child: const Text(
+                                    child: Text(
                                       "Sign up",
                                       style: TextStyle(
                                         fontFamily: "MontserratSemiBold",
+
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.secondary,
                                       ),
                                     ),
                                   ),
